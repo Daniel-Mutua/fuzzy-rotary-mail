@@ -1,7 +1,7 @@
 
 #include <WiFi.h>
 #include <ReadyMail.h>  // Make sure you installed ReadyMail via Library Manager
-//#include <SD.h>       // Uncomment if you want to attach files from SD
+//#include <SD.h>       // Uncomment if you want to attach files from SD for sending
 
 // ===== Wi-Fi credentials =====
 const char* ssid     = "YOUR_WIFI_NAME";
