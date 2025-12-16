@@ -4,8 +4,8 @@
 //#include <SD.h>       // Uncomment if you want to attach files from SD
 
 // ===== Wi-Fi credentials =====
-const char* ssid     = "JTL FAIBA";
-const char* password = "Langii7@7";
+const char* ssid     = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
 
 // ===== Email credentials =====
 const char* smtp_server = "smtp.example.com"; // Replace with your SMTP server
