@@ -1,1 +1,65 @@
 
+#include <WiFi.h>
+#include <ReadyMail.h>  // Make sure you installed ReadyMail via Library Manager
+//#include <SD.h>       // Uncomment if you want to attach files from SD
+
+// ===== Wi-Fi credentials =====
+const char* ssid     = "JTL FAIBA";
+const char* password = "Langii7@7";
+
+// ===== Email credentials =====
+const char* smtp_server = "smtp.example.com"; // Replace with your SMTP server
+const int   smtp_port   = 465;               // Usually 465 for SSL
+const char* email_user  = "[danielmutua221@gmail.com](mailto:danielmutua221@gmail.com)"; // Sender email
+const char* email_pass  = "****************";         // Sender password
+const char* recipient   = "[brianlangi202@gmail.com](mailto:brianlangi202@gmail.com)";  // Recipient email
+
+ReadyMailClass mailClient; // Updated class name
+
+void setup() {
+Serial.begin(115200);
+delay(1000);
+Serial.println("Connecting to Wi-Fi...");
+WiFi.begin(ssid, password);
+
+while (WiFi.status() != WL_CONNECTED) {
+delay(500);
+Serial.print(".");
+}
+
+Serial.println("\nWi-Fi connected!");
+
+// Initialize ReadyMail SMTP session
+mailClient.setDebug(true); // Enable debug messages
+mailClient.setSMTPServer(smtp_server, smtp_port, email_user, email_pass);
+
+// Send a test email
+if (sendTestEmail()) {
+Serial.println("Email sent successfully!");
+} else {
+Serial.println("Failed to send email.");
+}
+}
+
+void loop() {
+// Nothing here; you can call sendEmail() whenever an alert is triggered
+}
+
+bool sendTestEmail() {
+ReadyMailMessageClass message; // Updated class name
+
+message.setSender("ESP32 Alert", email_user);
+message.addRecipient("Recipient", recipient);
+message.setSubject("ESP32 Test Email");
+message.setText("This is a test email sent from ESP32 using ReadyMail.");
+
+// Optional: attach file
+// if (!SD.begin()) {
+//   Serial.println("SD card not found!");
+// } else {
+//   message.addAttachment("/test.txt"); // SD file path
+// }
+
+return mailClient.send(message);
+}
+
