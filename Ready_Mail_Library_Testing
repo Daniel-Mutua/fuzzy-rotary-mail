@@ -10,9 +10,9 @@ const char* password = "Langii7@7";
 // ===== Email credentials =====
 const char* smtp_server = "smtp.example.com"; // Replace with your SMTP server
 const int   smtp_port   = 465;               // Usually 465 for SSL
-const char* email_user  = "[danielmutua221@gmail.com](mailto:danielmutua221@gmail.com)"; // Sender email
+const char* email_user  = "[senders email address](mailto:senders email address)"; // Sender email
 const char* email_pass  = "****************";         // Sender password
-const char* recipient   = "[brianlangi202@gmail.com](mailto:brianlangi202@gmail.com)";  // Recipient email
+const char* recipient   = "[recepients email address](mailto:recipients email address)";  // Recipient email
 
 ReadyMailClass mailClient; // Updated class name
 
